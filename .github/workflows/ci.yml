@@ -1,0 +1,122 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend-lint:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend/
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run black
+        run: black --check app/ tests/
+      - name: Run ruff
+        run: ruff check app/ tests/
+      - name: Run mypy
+        run: mypy app/ --strict
+
+  backend-test:
+    runs-on: ubuntu-latest
+    needs: [backend-lint]
+    defaults:
+      run:
+        working-directory: backend/
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run pytest
+        env:
+          DATABASE_URL: "postgresql+asyncpg://test:test@localhost/test"
+          FIREBASE_PROJECT_ID: "crowdiq-test"
+          FIREBASE_SERVICE_ACCOUNT_PATH: "/nonexistent"
+          FIREBASE_STORAGE_BUCKET: "crowdiq-test.appspot.com"
+          GOOGLE_MAPS_API_KEY: "test-key"
+          GOOGLE_TRANSLATE_API_KEY: "test-key"
+          REDIS_URL: "https://test.upstash.io"
+          REDIS_TOKEN: "test-token"
+          SECRET_KEY: "test-secret-key-for-ci-only-not-used-in-production"
+          ALLOWED_ORIGINS: "http://localhost:5173"
+        run: pytest tests/ --cov=app --cov-report=xml --cov-report=term-missing --cov-fail-under=85
+      - uses: actions/upload-artifact@v4
+        with:
+          name: backend-coverage-report
+          path: backend/coverage.xml
+          retention-days: 7
+
+  frontend-lint-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend/
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: npm install
+      - name: Run ESLint
+        run: npm run lint
+      - name: Run type check
+        run: npm run type-check
+      - name: Run tests with coverage
+        env:
+          CI: "true"
+        run: npm run test:coverage
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frontend-coverage-report
+          path: frontend/coverage/
+          retention-days: 7
+
+  lighthouse:
+    runs-on: ubuntu-latest
+    needs: [frontend-lint-test]
+    defaults:
+      run:
+        working-directory: frontend/
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: npm install
+      - name: Build frontend
+        env:
+          VITE_API_BASE_URL: "https://crowdiq-api-placeholder.run.app"
+          VITE_FIREBASE_API_KEY: "placeholder"
+          VITE_FIREBASE_AUTH_DOMAIN: "placeholder.firebaseapp.com"
+          VITE_FIREBASE_PROJECT_ID: "crowdiq-test"
+          VITE_FIREBASE_STORAGE_BUCKET: "crowdiq-test.appspot.com"
+          VITE_FIREBASE_MESSAGING_SENDER_ID: "123456789"
+          VITE_FIREBASE_APP_ID: "1:123456789:web:placeholder"
+          VITE_FIREBASE_VAPID_KEY: "placeholder"
+          VITE_GOOGLE_MAPS_API_KEY: "placeholder"
+          VITE_GA_MEASUREMENT_ID: "G-PLACEHOLDER"
+        run: npm run build
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v11
+        with:
+          configPath: './lighthouserc.json'
+          uploadArtifacts: true
+          temporaryPublicStorage: true

@@ -1,0 +1,70 @@
+# LOCAL DEVELOPMENT ONLY
+# Firebase services use the Firebase Local Emulator Suite (run separately: firebase emulators:start)
+# Production: backend -> Cloud Run, frontend -> Firebase Hosting
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: crowdiq
+      # Dev-only password
+      POSTGRES_PASSWORD: crowdiq_dev_password
+      POSTGRES_DB: crowdiq_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U crowdiq -d crowdiq_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql+asyncpg://crowdiq:crowdiq_dev_password@postgres:5432/crowdiq_db
+      REDIS_URL: redis://redis:6379
+      FIREBASE_PROJECT_ID: ${FIREBASE_PROJECT_ID}
+      FIREBASE_STORAGE_BUCKET: ${FIREBASE_STORAGE_BUCKET}
+      GOOGLE_MAPS_API_KEY: ${GOOGLE_MAPS_API_KEY}
+      GOOGLE_TRANSLATE_API_KEY: ${GOOGLE_TRANSLATE_API_KEY}
+      SECRET_KEY: ${SECRET_KEY}
+      DEBUG: "true"
+      ALLOWED_ORIGINS: "http://localhost:5173,http://localhost:4173"
+    volumes:
+      - ./backend/firebase-service-account.json:/app/firebase-service-account.json:ro
+    restart: unless-stopped
+    networks:
+      - crowdiq_network
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  crowdiq_network:
+    driver: bridge

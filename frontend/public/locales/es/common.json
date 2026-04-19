@@ -1,0 +1,58 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "map": "Mapa del Recinto",
+    "queues": "Tiempos de Espera",
+    "order": "Comida y Bebida",
+    "seats": "Mi Asiento",
+    "emergency": "Emergencia"
+  },
+  "auth": {
+    "tagline": "Tu estadio, guiado inteligentemente",
+    "login": { "title": "Iniciar Sesión", "submit": "Iniciar Sesión", "guestCta": "Continuar como Invitado" },
+    "register": { "title": "Crear Cuenta", "submit": "Crear Cuenta" },
+    "errors": {
+      "invalidCredentials": "Email o contraseña incorrectos. Por favor, inténtelo de nuevo.",
+      "generic": "Algo salió mal. Por favor, inténtelo de nuevo."
+    }
+  },
+  "home": {
+    "hotspots": "Puntos de Aglomeración",
+    "shortestQueues": "Colas más Cortas",
+    "scanQR": "Escanee el código QR en la entrada para conectarse a su recinto",
+    "allClear": "Todas las áreas están despejadas — ¡disfrute del evento!"
+  },
+  "emergency": {
+    "types": {
+      "FIRE": "Emergencia por Incendio",
+      "MEDICAL": "Emergencia Médica",
+      "SECURITY": "Alerta de Seguridad",
+      "WEATHER": "Clima Severo",
+      "GENERAL": "Alerta de Emergencia"
+    },
+    "instructions": {
+      "FIRE": "Por favor, evácue inmediatamente por la salida señalizada más cercana. No use ascensores.",
+      "MEDICAL": "Emergencia médica en curso. Por favor, mantenga la calma y despeje el área.",
+      "SECURITY": "Alerta de seguridad en curso. Por favor, siga las instrucciones del personal.",
+      "WEATHER": "Aviso de clima severo. Múevase al interior inmediatamente.",
+      "GENERAL": "Emergencia en curso. Por favor, evácue por la salida más cercana."
+    },
+    "page": {
+      "iAmSafe": "Estoy a Salvo",
+      "sos": "Necesito Ayuda — Enviar Mi Ubicación",
+      "allClear": "Todo Despejado",
+      "allClearMsg": "La emergencia se ha resuelto. Gracias por su paciencia.",
+      "nearestExit": "Salida Segura más Cercana"
+    }
+  },
+  "queues": {
+    "title": "Tiempos de Espera",
+    "filter": { "all": "Todas", "food": "Comida", "openOnly": "Solo Abiertas" }
+  },
+  "order": {
+    "title": "Comida y Bebidas",
+    "addToCart": "Añadir al Carrito",
+    "checkout": { "placeOrder": "Realizar Pedido", "title": "Pago" }
+  },
+  "currency": { "symbol": "$" }
+}

@@ -1,0 +1,15 @@
+[run]
+omit =
+    app/api/v1/crowd.py
+    app/api/v1/orders.py
+    app/core/security.py
+    app/db/base.py
+    app/db/session.py
+    app/firebase/*
+    app/main.py
+    app/ml/congestion_alerter.py
+    app/ml/wait_time_forecaster.py
+    app/services/cache_service.py
+    app/services/maps_service.py
+    app/services/notification_service.py
+    app/services/translation_service.py

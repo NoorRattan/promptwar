@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0F172A" />
+  <title>You're offline — CrowdIQ</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:#0F172A;color:#F1F5F9;font-family:system-ui,sans-serif;
+         min-height:100vh;display:flex;align-items:center;justify-content:center;
+         padding:1.5rem;text-align:center}
+    .icon{font-size:4rem;margin-bottom:1.5rem;display:block}
+    h1{font-size:1.5rem;font-weight:700;margin-bottom:.75rem}
+    p{color:#94A3B8;line-height:1.6;max-width:30ch;margin:.5rem auto}
+    a{display:inline-block;margin-top:1.5rem;padding:.75rem 1.5rem;
+      background:#3B82F6;color:#fff;border-radius:.5rem;text-decoration:none;
+      font-weight:600}
+    a:focus{outline:2px solid #93C5FD;outline-offset:2px}
+  </style>
+</head>
+<body>
+  <main>
+    <span class="icon" aria-hidden="true">📵</span>
+    <h1>You're offline</h1>
+    <p>CrowdIQ needs a connection for live stadium data.</p>
+    <p>Emergency evacuation information is still available.</p>
+    <a href="/emergency">View Emergency Info</a>
+    <p style="margin-top:1rem;font-size:.875rem">
+      <a href="/" style="background:transparent;color:#64748B;padding:.25rem">
+        Try reconnecting →
+      </a>
+    </p>
+  </main>
+</body>
+</html>

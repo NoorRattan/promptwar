@@ -1,0 +1,46 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // crowd_density root docs: authenticated read only, no client writes
+    match /crowd_density/{doc} {
+      allow read: if request.auth != null;
+      allow write: if false;
+    }
+
+    // crowd density zones subcollection used by attendee/admin live heatmaps
+    match /crowd_density/{venueId}/zones/{zoneId} {
+      allow read: if request.auth != null;
+      allow write: if false;
+    }
+
+    // emergency: public read (no auth required), no client writes
+    match /emergency/{doc} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // queue_states root docs: authenticated read only, no client writes
+    match /queue_states/{doc} {
+      allow read: if request.auth != null;
+      allow write: if false;
+    }
+
+    // queue state subcollection used by attendee/admin queue views
+    match /queue_states/{venueId}/queues/{queueId} {
+      allow read: if request.auth != null;
+      allow write: if false;
+    }
+
+    // order_states: owner read only, no client writes
+    match /order_states/{orderId} {
+      allow read: if request.auth != null && request.auth.uid == resource.data.user_id;
+      allow write: if false;
+    }
+
+    // Default deny everything else
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

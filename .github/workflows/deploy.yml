@@ -1,0 +1,119 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+# Required GitHub Secrets:
+# GCP_SERVICE_ACCOUNT_KEY         — GCP service account JSON with Cloud Run deploy permissions
+# FIREBASE_PROJECT_ID             — Firebase project ID
+# FIREBASE_STORAGE_BUCKET         — Firebase storage bucket name
+# FIREBASE_SERVICE_ACCOUNT_JSON   — Firebase Admin SDK service account JSON (for Secret Manager)
+# FIREBASE_SERVICE_ACCOUNT        — Firebase service account for hosting deploy action
+# GOOGLE_MAPS_API_KEY             — Google Maps API key (backend)
+# GOOGLE_TRANSLATE_API_KEY        — Google Translate API key
+# SECRET_KEY                      — 64-char random hex string for JWT
+# DATABASE_URL                    — Supabase PostgreSQL async connection string
+# REDIS_URL                       — Upstash Redis HTTPS URL
+# REDIS_TOKEN                     — Upstash Redis REST token
+# VITE_API_BASE_URL               — Cloud Run deployed URL
+# VITE_FIREBASE_API_KEY           — Firebase web API key
+# VITE_FIREBASE_AUTH_DOMAIN       — Firebase auth domain
+# VITE_FIREBASE_PROJECT_ID        — Firebase project ID (frontend)
+# VITE_FIREBASE_STORAGE_BUCKET    — Firebase storage bucket (frontend)
+# VITE_FIREBASE_MESSAGING_SENDER_ID — FCM sender ID
+# VITE_FIREBASE_APP_ID            — Firebase app ID
+# VITE_FIREBASE_VAPID_KEY         — FCM VAPID key for PWA push
+# VITE_GOOGLE_MAPS_API_KEY        — Google Maps API key (frontend)
+# VITE_GA_MEASUREMENT_ID          — GA4 measurement ID
+
+jobs:
+  deploy-backend:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+          
+      - uses: google-github-actions/setup-gcloud@v2
+      
+      - name: Configure Docker
+        run: gcloud auth configure-docker us-central1-docker.pkg.dev
+        
+      - id: deploy
+        uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: crowdiq-api
+          region: us-central1
+          project_id: promptwar-492611
+          source: ./backend
+          flags: |
+            --allow-unauthenticated
+            --memory=512Mi
+            --cpu=1
+            --min-instances=0
+            --max-instances=3
+            --concurrency=80
+            --timeout=120s
+          env_vars: |
+            FIREBASE_PROJECT_ID=${{ secrets.FIREBASE_PROJECT_ID }},
+            FIREBASE_STORAGE_BUCKET=${{ secrets.FIREBASE_STORAGE_BUCKET }},
+            GOOGLE_MAPS_API_KEY=${{ secrets.GOOGLE_MAPS_API_KEY }},
+            GOOGLE_TRANSLATE_API_KEY=${{ secrets.GOOGLE_TRANSLATE_API_KEY }},
+            SECRET_KEY=${{ secrets.SECRET_KEY }},
+            ALLOWED_ORIGINS=https://promptwar-db092.web.app,https://promptwar-db092.firebaseapp.com,http://localhost:5173,http://localhost:4173,
+            DATABASE_URL=${{ secrets.DATABASE_URL }},
+            REDIS_URL=${{ secrets.REDIS_URL }},
+            REDIS_TOKEN=${{ secrets.REDIS_TOKEN }},
+            DEBUG=false
+          secrets: |
+            /app/firebase-service-account.json=FIREBASE_SERVICE_ACCOUNT_JSON:latest
+            
+      - name: Output Cloud Run URL
+        run: echo "Deployed Service URL ${{ steps.deploy.outputs.url }}"
+        
+      - name: Note on unauthenticated access
+        run: echo "Note:- --allow-unauthenticated allows public API access. All sensitive endpoints are protected by Firebase JWT verification in application code."
+
+  deploy-frontend:
+    runs-on: ubuntu-latest
+    needs: [deploy-backend]
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Install dependencies
+        run: npm install
+        
+      - name: Build frontend
+        env:
+          VITE_API_BASE_URL: ${{ secrets.VITE_API_BASE_URL }}
+          VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
+          VITE_FIREBASE_AUTH_DOMAIN: ${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}
+          VITE_FIREBASE_PROJECT_ID: ${{ secrets.VITE_FIREBASE_PROJECT_ID }}
+          VITE_FIREBASE_STORAGE_BUCKET: ${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}
+          VITE_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}
+          VITE_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID }}
+          VITE_FIREBASE_VAPID_KEY: ${{ secrets.VITE_FIREBASE_VAPID_KEY }}
+          VITE_GOOGLE_MAPS_API_KEY: ${{ secrets.VITE_GOOGLE_MAPS_API_KEY }}
+          VITE_GA_MEASUREMENT_ID: ${{ secrets.VITE_GA_MEASUREMENT_ID }}
+        run: npm run build
+        
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          channelId: live
+          projectId: promptwar-db092
+          entryPoint: .

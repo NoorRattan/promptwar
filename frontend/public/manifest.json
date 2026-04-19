@@ -1,0 +1,46 @@
+{
+  "name": "CrowdIQ — Smart Stadium Experience",
+  "short_name": "CrowdIQ",
+  "description": "Real-time crowd intelligence for seamless large-scale sporting event experiences",
+  "theme_color": "#0F172A",
+  "background_color": "#0F172A",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "start_url": "/?source=pwa",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["sports", "utilities", "navigation"],
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' rx='24' fill='%230F172A'/><text x='96' y='130' text-anchor='middle' font-size='100' font-family='sans-serif'>🏟</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='48' fill='%230F172A'/><text x='256' y='340' text-anchor='middle' font-size='280' font-family='sans-serif'>🏟</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Venue Map",
+      "short_name": "Map",
+      "description": "View live crowd density map",
+      "url": "/map?source=shortcut",
+      "icons": [{ "src": "favicon.svg", "sizes": "96x96" }]
+    },
+    {
+      "name": "Emergency",
+      "short_name": "Emergency",
+      "description": "Emergency evacuation information",
+      "url": "/emergency?source=shortcut",
+      "icons": [{ "src": "favicon.svg", "sizes": "96x96" }]
+    }
+  ],
+  "screenshots": [],
+  "prefer_related_applications": false
+}

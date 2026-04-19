@@ -1,0 +1,58 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "map": "Plan du Bâtiment",
+    "queues": "Temps d'Attente",
+    "order": "Nourriture & Boissons",
+    "seats": "Mon Siège",
+    "emergency": "Urgence"
+  },
+  "auth": {
+    "tagline": "Votre stade, guidé intelligemment",
+    "login": { "title": "Se Connecter", "submit": "Se Connecter", "guestCta": "Continuer en tant qu'Invité" },
+    "register": { "title": "Créer un Compte", "submit": "Créer un Compte" },
+    "errors": {
+      "invalidCredentials": "Email ou mot de passe incorrect. Veuillez réessayer.",
+      "generic": "Un problème est survenu. Veuillez réessayer."
+    }
+  },
+  "home": {
+    "hotspots": "Zones de Foule en Direct",
+    "shortestQueues": "Files les Plus Courtes",
+    "scanQR": "Scannez le code QR à l'entrée pour vous connecter à votre lieu",
+    "allClear": "Toutes les zones sont libres — profitez de l'événement!"
+  },
+  "emergency": {
+    "types": {
+      "FIRE": "Urgence Incendie",
+      "MEDICAL": "Urgence Médicale",
+      "SECURITY": "Alerte de Sécurité",
+      "WEATHER": "Météo Sévère",
+      "GENERAL": "Alerte d'Urgence"
+    },
+    "instructions": {
+      "FIRE": "Veuillez évacuer immédiatement par la sortie la plus proche. N'utilisez pas les ascenseurs.",
+      "MEDICAL": "Urgence médicale en cours. Veuillez rester calme et dégager la zone.",
+      "SECURITY": "Alerte de sécurité en cours. Veuillez suivre les instructions du personnel.",
+      "WEATHER": "Alerte de temps violent. Déplacez-vous à l'intérieur immédiatement.",
+      "GENERAL": "Urgence en cours. Veuillez évacuer par la sortie la plus proche."
+    },
+    "page": {
+      "iAmSafe": "Je suis en Sécurité",
+      "sos": "J'ai Besoin d'Aide — Envoyer Ma Localisation",
+      "allClear": "Fin d'Alerte",
+      "allClearMsg": "L'urgence est résolue. Merci pour votre patience.",
+      "nearestExit": "Sortie Sûre la Plus Proche"
+    }
+  },
+  "queues": {
+    "title": "Temps d'Attente",
+    "filter": { "all": "Tout", "food": "Nourriture", "openOnly": "Ouvert Uniquement" }
+  },
+  "order": {
+    "title": "Nourriture & Boissons",
+    "addToCart": "Ajouter au Panier",
+    "checkout": { "placeOrder": "Passer la Commande", "title": "Paiement" }
+  },
+  "currency": { "symbol": "₹" }
+}

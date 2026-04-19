@@ -1,0 +1,12 @@
+__pycache__
+*.pyc
+*.pyo
+.pytest_cache
+.coverage
+.env
+.venv
+venv/
+tests/
+.git
+*.md
+firebase-service-account.json

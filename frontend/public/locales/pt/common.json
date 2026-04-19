@@ -1,0 +1,58 @@
+{
+  "nav": {
+    "home": "Início",
+    "map": "Mapa do Local",
+    "queues": "Tempos de Espera",
+    "order": "Comida e Bebida",
+    "seats": "Meu Assento",
+    "emergency": "Emergência"
+  },
+  "auth": {
+    "tagline": "Seu estádio, guiado de forma inteligente",
+    "login": { "title": "Entrar", "submit": "Entrar", "guestCta": "Continuar como Convidado" },
+    "register": { "title": "Criar Conta", "submit": "Criar Conta" },
+    "errors": {
+      "invalidCredentials": "Email ou senha incorretos. Por favor, tente novamente.",
+      "generic": "Algo deu errado. Por favor, tente novamente."
+    }
+  },
+  "home": {
+    "hotspots": "Pontos de Lotação",
+    "shortestQueues": "Filas Mais Curtas",
+    "scanQR": "Escaneie o código QR na entrada para se conectar ao local",
+    "allClear": "Todas as áreas estão livres — aproveite o evento!"
+  },
+  "emergency": {
+    "types": {
+      "FIRE": "Emergência de Incêndio",
+      "MEDICAL": "Emergência Médica",
+      "SECURITY": "Alerta de Segurança",
+      "WEATHER": "Tempo Severo",
+      "GENERAL": "Alerta de Emergência"
+    },
+    "instructions": {
+      "FIRE": "Por favor, evacue imediatamente pela saída marcada mais próxima. Não use os elevadores.",
+      "MEDICAL": "Emergência médica em andamento. Por favor, mantenha a calma e libere a área.",
+      "SECURITY": "Alerta de segurança em andamento. Por favor, siga as instruções da equipe.",
+      "WEATHER": "Aviso de tempo severo. Mova-se para o interior imediatamente.",
+      "GENERAL": "Emergência em andamento. Por favor, evacue pela saída mais próxima."
+    },
+    "page": {
+      "iAmSafe": "Estou Seguro",
+      "sos": "Preciso de Ajuda — Enviar Minha Localização",
+      "allClear": "Tudo Limpo",
+      "allClearMsg": "A emergência foi resolvida. Obrigado pela sua paciência.",
+      "nearestExit": "Saída Segura Mais Próxima"
+    }
+  },
+  "queues": {
+    "title": "Tempos de Espera",
+    "filter": { "all": "Todas", "food": "Comida", "openOnly": "Apenas Abertas" }
+  },
+  "order": {
+    "title": "Comida e Bebidas",
+    "addToCart": "Adicionar ao Carrinho",
+    "checkout": { "placeOrder": "Fazer Pedido", "title": "Pagamento" }
+  },
+  "currency": { "symbol": "₹" }
+}

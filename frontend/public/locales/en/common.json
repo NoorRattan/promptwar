@@ -1,0 +1,354 @@
+{
+  "auth": {
+    "tagline": "Your stadium, intelligently guided",
+    "login": {
+      "title": "Log In",
+      "email": "Email Address",
+      "password": "Password",
+      "submit": "Sign In",
+      "guestCta": "Continue as Guest",
+      "registerLink": "Don't have an account? Create one"
+    },
+    "register": {
+      "title": "Create Account",
+      "fullName": "Full Name",
+      "confirmPassword": "Confirm Password",
+      "submit": "Create Account",
+      "loginLink": "Already have an account? Sign in"
+    },
+    "errors": {
+      "invalidCredentials": "Invalid email or password",
+      "tooManyAttempts": "Too many attempts, please try again later",
+      "generic": "An error occurred, please try again",
+      "emailInUse": "Email is already in use",
+      "weakPassword": "Password is too weak"
+    },
+    "passwordStrength": {
+      "weak": "Weak",
+      "medium": "Medium",
+      "strong": "Strong"
+    }
+  },
+  "home": {
+    "hotspots": "Live Crowd Hotspots",
+    "shortestQueues": "Shortest Queues",
+    "activeOrders": "Active Orders",
+    "quickActions": "Quick Actions",
+    "scanQR": "Scan QR at entrance",
+    "allClear": "All areas are clear — enjoy the event!",
+    "noQueues": "No queues open right now",
+    "updated": "Updated",
+    "viewMap": "View Full Map →",
+    "viewQueues": "See all queues →"
+  },
+  "map": {
+    "nearestExit": "Navigate to nearest exit",
+    "avoidCrowds": "Avoid crowded zones when navigating",
+    "navigateHere": "Navigate Here",
+    "clearRoute": "Get Directions",
+    "staleData": "Last updated X min ago",
+    "noVenue": "Scan the QR code at the entrance to load your venue map",
+    "zoneDetail": {
+      "walkTime": "~{{minutes}} min walk",
+      "criticalWarning": "⚠️ This area is very crowded — we recommend avoiding it",
+      "close": "Close zone details"
+    }
+  },
+  "queues": {
+    "title": "Wait Times",
+    "smartSuggest": "Nearest food",
+    "sort": {
+      "waitTime": "Wait Time",
+      "type": "Type",
+      "distance": "Distance"
+    },
+    "filter": {
+      "all": "All",
+      "food": "Food 🍔",
+      "restroom": "Restroom 🚻",
+      "entry": "Entry 🎫",
+      "medical": "Medical 🏥",
+      "merch": "Merch 👕",
+      "openOnly": "Open Only"
+    },
+    "noMatch": "No queues match your filters",
+    "clearFilters": "Clear filters",
+    "alert": {
+      "title": "Alert me when wait drops below…",
+      "placeholder": "Minutes",
+      "submit": "Set Alert",
+      "success": "✅ You'll be notified when wait drops below {{n}} min"
+    },
+    "showing": "Showing {{n}} of {{total}} queues"
+  },
+  "queue": {
+    "types": {
+      "food": "Food & Beverage",
+      "restroom": "Restrooms",
+      "entry": "Entry Gates",
+      "medical": "First Aid",
+      "merch": "Merchandise"
+    }
+  },
+  "order": {
+    "title": "Order Food",
+    "categories": {
+      "all": "ALL",
+      "snacks": "Snacks",
+      "mains": "Mains",
+      "beverages": "Beverages",
+      "desserts": "Desserts"
+    },
+    "dietary": {
+      "vegetarian": "Vegetarian",
+      "vegan": "Vegan",
+      "glutenFree": "Gluten-Free",
+      "halal": "Halal"
+    },
+    "soldOut": "Sold Out",
+    "addToCart": "Add to Cart",
+    "specialInstructions": "Special instructions",
+    "cart": {
+      "title": "Your Cart",
+      "empty": "Cart is empty",
+      "checkout": "Checkout"
+    },
+    "checkout": {
+      "title": "Checkout",
+      "pickupZone": "Pickup Zone",
+      "pickupSlot": "Pickup Slot",
+      "placeOrder": "Place Order",
+      "total": "Total",
+      "back": "Back"
+    }
+  },
+  "currency": {
+    "symbol": "₹"
+  },
+  "orderStatus": {
+    "title": "Order Status",
+    "stages": {
+      "received": "Received",
+      "confirmed": "Confirmed",
+      "preparing": "Preparing",
+      "ready": "Ready",
+      "collected": "Collected"
+    },
+    "code": "Your order code:",
+    "showAtCounter": "Show this at the counter",
+    "readyBanner": "🎉 Your order is ready! Head to {{counter}}",
+    "collectedMsg": "✅ Order collected. Enjoy!",
+    "items": "View items",
+    "cancel": "Cancel",
+    "cancelConfirm": "Are you sure you want to cancel this order?",
+    "cancelTitle": "Cancel Order",
+    "estimatedReady": "Ready at approximately {{time}}",
+    "pickupAt": "Pickup from {{zone}}",
+    "backToMenu": "Back to Menu"
+  },
+  "seats": {
+    "title": "Upgrade Your Seat",
+    "currentSeat": "Current Seat",
+    "generalAdmission": "General Admission",
+    "upgrades": "Available Upgrades",
+    "noOffers": "No upgrade offers available right now. Check back during halftime!",
+    "accept": "Accept Upgrade",
+    "decline": "Not Now",
+    "confirmTitle": "Upgrade to {{toSeat}}?",
+    "confirmPrice": "Cost: ₹{{priceDiff}}",
+    "expiresWarning": "⚠️ Offer expires in {{time}}!",
+    "successToast": "Upgrade successful!",
+    "errorToast": "Upgrade failed. Please try again.",
+    "refresh": "Refresh offers",
+    "viewQuality": "View Quality",
+    "viewQualityAriaLabel": "View quality: {{n}} of 5 stars"
+  },
+  "emergency": {
+    "types": {
+      "FIRE": "Fire Emergency",
+      "MEDICAL": "Medical Emergency",
+      "SECURITY": "Security Alert",
+      "WEATHER": "Severe Weather Warning",
+      "GENERAL": "Emergency Alert"
+    },
+    "instructions": {
+      "FIRE": "Please evacuate the building immediately using the nearest safe exit.",
+      "MEDICAL": "A medical emergency has been reported. Please keep clear of the area to allow medical personnel to assist.",
+      "SECURITY": "A security alert has been issued. Please remain alert and follow staff instructions.",
+      "WEATHER": "Severe weather approaching. Please seek shelter immediately.",
+      "GENERAL": "An emergency has been declared. Please follow all staff instructions."
+    },
+    "page": {
+      "title": "Emergency Info — CrowdIQ",
+      "activeTitle": "Active Emergency — Please follow instructions below",
+      "subtitle": "Active Emergency",
+      "speakBtn": "Read evacuation instructions aloud",
+      "pauseBtn": "Pause voice instructions",
+      "resumeBtn": "Resume voice instructions",
+      "speakAgain": "Read aloud again",
+      "audioUnsupported": "Audio not available on this device",
+      "audioError": "Audio failed — please read the instructions above",
+      "nearestExit": "Nearest Safe Exit:",
+      "exitDistance": "~{{distance}}",
+      "stepsTitle": "Step-by-step route",
+      "iAmSafe": "I Am Safe",
+      "safeConfirmed": "Safety confirmed — thank you",
+      "sos": "I Need Help — Send My Location",
+      "sosSent": "SOS Sent — Help is on the way",
+      "routeUpdated": "Route updated. Follow new directions.",
+      "offline": "📵 Offline — showing last known evacuation route",
+      "allClear": "All Clear",
+      "allClearMsg": "The emergency has been resolved. Thank you for your patience.",
+      "knowYourExits": "Know Your Exits",
+      "generalInfo": "General Information",
+      "manualSos": "Send emergency SOS to venue security",
+      "sosConfirmed": "✅ Your location has been shared",
+      "manualSosRateLimit": "Please wait before sending another SOS",
+      "backToVenue": "Back to venue",
+      "mapAriaLabel": "Evacuation route map",
+      "langSelector": "Language selector",
+      "stepAriaLabel": "Step {{n}}: {{instruction}}"
+    }
+  },
+  "admin": {
+    "dashboard": {
+      "title": "Operations Dashboard",
+      "welcome": "Welcome back",
+      "refresh": "Refresh",
+      "activeIncidents": "active incident(s)",
+      "metrics": {
+        "ordersToday": "Orders Today",
+        "revenueToday": "Revenue Today",
+        "avgPrepTime": "Avg Prep Time",
+        "busiestZone": "Busiest Zone",
+        "peakCrowd": "Peak Crowd",
+        "upgradeRevenue": "Upgrade Revenue"
+      },
+      "quickLinks": {
+        "heatmap": "Live Heatmap",
+        "queues": "Manage Queues",
+        "orders": "Orders",
+        "emergency": "Emergency"
+      }
+    },
+    "heatmap": {
+      "title": "Crowd Intelligence",
+      "zoneList": "Zone Status",
+      "closeZone": "Close Zone",
+      "broadcast": "Send to Zone",
+      "predictions": "AI Predictions",
+      "history": "2-Hour History"
+    },
+    "queues": {
+      "title": "Queue Management",
+      "toggleOpen": "Open",
+      "toggleClose": "Close",
+      "overrideWait": "Override Wait",
+      "annotation": "Note",
+      "predictions": "AI Predictions",
+      "closeConfirm": "Close this queue? Attendees will be redirected."
+    },
+    "orders": {
+      "title": "Order Queue",
+      "audioAlerts": "Audio Alerts",
+      "confirm": "Confirm",
+      "startPreparing": "Start Preparing",
+      "markReady": "Mark Ready",
+      "markCollected": "Mark Collected",
+      "soldOutToggle": "Mark sold out",
+      "soldOutConfirm": "Mark sold out? Attendees won't be able to order this item.",
+      "tabs": {
+        "all": "All Active",
+        "ready": "Ready",
+        "preparing": "Preparing",
+        "received": "Received"
+      }
+    },
+    "emergency": {
+      "title": "Emergency Control",
+      "selectType": "Select Emergency Type",
+      "affectedZones": "Affected Zones",
+      "customMessage": "Custom Message (optional)",
+      "activateBtn": "ACTIVATE EMERGENCY",
+      "confirmBtn": "CONFIRM ACTIVATION",
+      "activatingIn": "Activating in",
+      "deactivateBtn": "ALL CLEAR — Deactivate Emergency",
+      "deactivateConfirm": "Confirm deactivation? An incident report will be auto-generated.",
+      "preview": "Attendees will see",
+      "stats": {
+        "attendees": "Attendees Connected",
+        "sos": "SOS Reports",
+        "exits": "Exits Blocked"
+      },
+      "exitManagement": "Exit Management",
+      "blockExit": "Block",
+      "unblockExit": "Unblock",
+      "activeDuration": "Active for"
+    },
+    "analytics": {
+      "title": "Analytics",
+      "period": "Today",
+      "charts": {
+        "hourlyOrders": "Hourly Orders",
+        "revenue": "Revenue by Hour",
+        "crowdDistribution": "Crowd Zone Distribution"
+      }
+    },
+    "staff": {
+      "title": "Staff & Tasks",
+      "createTask": "Create Task",
+      "kanban": {
+        "pending": "Pending",
+        "inProgress": "In Progress",
+        "completed": "Completed",
+        "escalated": "Escalated"
+      },
+      "task": {
+        "assignTo": "Assign To",
+        "zone": "Zone",
+        "type": "Task Type",
+        "description": "Description",
+        "priority": "Priority",
+        "dueAt": "Due At",
+        "moveTo": "Move to..."
+      }
+    },
+    "seats": {
+      "title": "Seat Upgrades",
+      "createOffer": "Create Offer",
+      "table": {
+        "fromSeat": "From",
+        "toSeat": "To",
+        "priceDiff": "Price Diff",
+        "expiresAt": "Expires",
+        "status": "Status",
+        "sent": "Sent",
+        "accepted": "Accepted",
+        "declined": "Declined"
+      },
+      "offer": {
+        "fromSeat": "From Seat",
+        "toSeat": "To Seat",
+        "priceDiff": "Price Difference (₹)",
+        "expiresIn": "Expires In (minutes)",
+        "targetUser": "Target Attendee ID (leave blank for all)"
+      }
+    },
+    "incidents": {
+      "title": "Incident History",
+      "empty": "No incidents recorded. Stay safe!",
+      "export": "Download as JSON",
+      "refresh": "Refresh",
+      "columns": {
+        "type": "Type",
+        "severity": "Severity",
+        "status": "Status",
+        "zones": "Zones",
+        "duration": "Duration",
+        "sos": "SOS Reports",
+        "activatedBy": "Activated By",
+        "timestamp": "Timestamp"
+      }
+    }
+  }
+}
